@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <style>
+
+        @media only screen and (max-width:  967px) {
+        
+             .container-div{
+                /* border: red solid; */
+                width: 100%;
+                height: 35rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+             }
+        
+             .form-div{
+                border: gray solid;
+                display: flex;
+                background-color: white;
+                flex-direction: column;
+                /* width: 30rem; */
+                padding: 20px;
+                border-radius: 15px;
+             }
+        
+             .form-div h4{
+                text-align: center;
+                padding-bottom: 10px;
+             }
+            }
+
+
+       @media only screen and (min-width:  968px) {
+        .container-div{
+        /* border: red solid; */
+        width: 100%;
+        height: 35rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+     }
+
+     .form-div{
+        border: gray solid;
+        display: flex;
+        background-color: white;
+        flex-direction: column;
+        width: 30rem;
+        padding: 20px;
+        border-radius: 15px;
+     }
+
+     .form-div h4{
+        text-align: center;
+        padding-bottom: 10px;
+     }
+
+    }
+
+    </style>
+</head>
+
+
+
+
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin-bottom: 20px; border-bottom: gray solid;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Book store</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="signIn.html">Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="signUp.html">Sign Up</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Nav -->
+
+
+
+    <div id="container-body">
+
+        <div class="container-div">
+       
+            <!-- Form -->
+            <div class="form-div">
+            <h4>Sign up</h4>
+            <form>
+                <!-- name -->
+                <div class="mb-3">
+                    <label for="user-name" class="form-label">User name :</label>
+                    <input type="input" class="form-control" id="user-name" aria-describedby="nameHelp" required>
+                    <div id="userName-help" class="form-text"></div>
+                </div>
+        
+                <!-- id="exampleInputEmail1" -->
+        
+                <!-- email -->
+                <div class="mb-3">
+                  <label for="emailValue" class="form-label">Email address :</label>
+                  <input type="email" class="form-control" id="emailValue" aria-describedby="emailHelp" required>
+                  <div id="emailHelp" class="form-text"></div>
+        
+                </div>
+        
+                <!-- id="exampleInputEmail1" -->
+        
+                <!-- password -->
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password :</label>
+                  <input type="password" class="form-control" id="password" required>
+                  <div id="passHelp" class="form-text"></div>
+        
+                </div>
+        
+                <!-- id="exampleInputPassword1" -->
+        
+                <button id="submit-btn" type="submit" class="btn btn-primary" style="background-color: gray; border: none;">Register</button>
+              </form>
+            </div>
+        
+        
+            </div>
+        
+        
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); margin-top: 20px;">
+          © 2023 Copyright:
+          <a class="text-dark">Arwa</a>
+        </div>
+    </footer> 
+     <!-- End footer -->   
+
+
+</body>
+</html>
+
+
+<script>
+
+
+    let userName = document.querySelector("#user-name")
+    let emailValue = document.querySelector("#emailValue")
+    let passwordValue = document.querySelector("#password")
+    
+    let userMessage = document.getElementById("userName-help")
+    let emailMessage = document.getElementById("emailHelp")
+    let passMessage = document.getElementById("passHelp")
+    
+    let btn = document.getElementById("submit-btn")
+    
+    localStorage.setItem('Admin', 'Arwa'); //Local storage    
+
+    
+    btn.addEventListener("click", ()=> {
+    
+        event.preventDefault();
+
+
+         validate();
+
+
+                function validate(){
+                
+                let flag = "true";
+
+                let user = userName.value
+                let email = emailValue.value
+                let password = passwordValue.value
+
+ 
+                //validate user name
+                 if (user.length < 5 || allLetters(user) == false){
+                 userMessage.innerText = "Usrename should be more than 5 characters and contain characters only"
+                 flag = "false" }
+
+
+                 function allLetters(user) {
+                    let pattern = /^[A-Za-z]+$/;
+                     if (user.match(pattern))
+                     {return true; 
+                    }
+                    else return false;
+                    }
+
+
+                // validate email
+                let val = isValidEmail(email);
+                 if (val == false){
+                 emailMessage.innerText = "Invalid email format"
+                 flag = "false" }
+
+
+                function isValidEmail(email) {
+                const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                return emailReg.test(email);}
+
+
+
+
+                //validate password
+                if (password.length < 8 ){
+                passMessage.innerText = "Password should be more than 8 characters"
+                 flag = "false" }
+
+
+
+                //validate password
+
+                if (flag == "true"){
+                    
+                    myAPI(user,email,password);
+                }
+                
+                }//end validate function
+
+
+
+            function myAPI(user,email,password){
+
+                fetch("https://65520b5b5c69a7790329765e.mockapi.io/users-info", {
+                    
+                    method: 'POST',
+                    body: JSON.stringify({
+                        user,
+                        email,
+                        password
+
+                   }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((json) => {
+                    console.log("ya");
+                    localStorage.clear(); //clear local storage
+                    window.location.href = "signIn.html";
+
+                    })
+                    .catch(err => console.log(err));
+                }
+    
+
+            })
+
+
+    
+    </script>
